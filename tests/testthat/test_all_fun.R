@@ -9,7 +9,7 @@
 
 library(testthat)
 library(devtools)
-devtools::load_all()
+#devtools::load_all()
 
 packages <- c("survRM2", "mvtnorm", "ggplot2", "MASS", "tidyr", "survival", "nph", "tidyverse",
               "foreach", "doParallel", "cowplot", "IRdisplay", "rlang", "simtrial", "ggrepel")
@@ -40,6 +40,8 @@ clusterExport(cluster, "expo_gen_2stages")
 
 # test
 test_that('Testing expo_gen_2stages and RMST_sim_test',{
+  result <- tryCatch({
+
   median_con <- 10 # month
   lambda_H0 <- log(2)/median_con
   lambda_H1 <- lambda_H0 * 0.67
@@ -56,6 +58,14 @@ test_that('Testing expo_gen_2stages and RMST_sim_test',{
   simple_rmst_2 <- RMST_sim_test(data_C = data_C, data_E = data_E_H1, sim_size = sim_size, tau = tau,
                             n = n, alpha = 0.05 ,sided = 'two_sided')
   print(simple_rmst_2$test_result$rejection)
+  
+  }, error = function(e) {
+    stop("An error occurred: ", e$message)
+  })
+  
+  # If no error occurs, the test will pass
+  expect_true(TRUE)
+
 })
 
 # Stop the cluster after tests
