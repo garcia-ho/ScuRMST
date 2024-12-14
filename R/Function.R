@@ -25,6 +25,7 @@
 NULL
 #‘
 #’
+utils::globalVariables(c("k", "variable", "value", "linetype_group"))
 
 #' expo_gen_2stages
 #'

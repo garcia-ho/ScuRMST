@@ -1,0 +1,25 @@
+---
+title: "Introduction of ScuRMST"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+# Introduction
+
+**ScuRMST** package is used for for Sculpted RMST Two Stages Double-arm Clinical Trial Design.\\ 
+Sculpted refers to a defined critical region that necessitates both a significant difference in RMST between groups and a large absolute value of RMST in the experimental group in order to declare the treatment effective.\\
+Further information of technical details can be found at https://github.com/garcia-ho/RMST_Code.git
+
+
+## Installation
+
+To install the **ScuRMST** package from CRAN, use the following command:
+
+```r
+install.packages("ScuRMST")
+devtools::install_github("garcia-ho/ScuRMST.git")
+
+library(ScuRMST)
+```
