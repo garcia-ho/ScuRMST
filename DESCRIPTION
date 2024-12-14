@@ -9,20 +9,23 @@ Description: This package is for Sculpted RMST Two Stages Double-arm Clinical Tr
 License: MIT + file LICENSE
 Imports:
   survRM2,
-  mvtnorm,
-  ggplot2,
-  MASS,
-  tidyr,
-  survival,
-  nph,
-  tidyverse,
-  foreach,
-  doParallel,
-  cowplot,
-  IRdisplay,
-  rlang,
-  simtrial,
-  ggrepel
+    mvtnorm,
+    ggplot2,
+    MASS,
+    truncnorm,
+    tidyr,
+    survival,
+    nph,
+    tidyverse,
+    foreach,
+    doParallel,
+    cowplot,
+    IRdisplay,
+    rlang,
+    simtrial,
+    ggrepel,
+    viridis,
+    dplyr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

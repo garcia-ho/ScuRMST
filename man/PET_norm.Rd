@@ -2,18 +2,28 @@
 % Please edit documentation in R/Function.R
 \name{PET_norm}
 \alias{PET_norm}
-\title{\subsection{PET_norm}{
-
-It returns c(PET0, PET1), where PET0 = prob(E-C>m1 & E>t1|H0). Use bivariate normal density to calculate.
-Input the estimated RMST mean and variance of each group (control and experiment) and the critical value
-}}
+\title{PET_norm}
 \usage{
 PET_norm(mu_c, var_c, mu_e, var_e, m1, t1)
 }
-\description{
-\subsection{PET_norm}{
+\arguments{
+\item{mu_c}{Mean of the control group.}
 
-It returns c(PET0, PET1), where PET0 = prob(E-C>m1 & E>t1|H0). Use bivariate normal density to calculate.
-Input the estimated RMST mean and variance of each group (control and experiment) and the critical value
+\item{var_c}{Variance of the control group.}
+
+\item{mu_e}{Mean of the experimental group.}
+
+\item{var_e}{Variance of the experimental group.}
+
+\item{m1}{Threshold for RMST difference E-C at interim analysis.}
+
+\item{t1}{Time point for Experimental group RMST E at interim analysis.}
 }
+\value{
+Probability of Early Termination (PET).
+}
+\description{
+It returns \code{c(PET0, PET1)}, where \code{PET0 = prob(E-C>m1 & E>t1|H0)} using bivariate normal density.
+Input the estimated RMST mean and variance of each group (control and experiment)
+and the critical value \code{(m1,t1)}
 }

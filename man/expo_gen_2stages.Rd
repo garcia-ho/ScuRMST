@@ -2,13 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{expo_gen_2stages}
 \alias{expo_gen_2stages}
-\title{expo_gen_2stages
-—————————————————————————————————————————————————————
-This function generate exponential dist survival data for 2 stages test.
-The censoring distribution in interim period is different from the whole trail
-It returns an (N * 3 * 2) array : obs_survival_int, event_int, obs_survival_fin, event_fin, arm
-3 columns are: obs_survival, event, arm
-If interim is a c(), result\link{, , i} is the result of ith interim (N * 5)}
+\title{expo_gen_2stages}
 \usage{
 expo_gen_2stages(
   N,
@@ -24,28 +18,58 @@ expo_gen_2stages(
 )
 }
 \arguments{
-\item{N:}{Number of patients}
+\item{N}{Number of patients}
 
-\item{dist:}{'exp' for exponential, 'pcw_exp' for piecewise exponential}
+\item{dist}{'exp' for exponential, 'pcw_exp' for piecewise exponential}
 
-\item{acc_time:}{Accrual time period with constant rate}
+\item{acc_time}{Accrual time period with constant rate}
 
-\item{lambda:}{The parameter for exponential distribution}
+\item{cen_time}{Extra (minimum) censoring period after accrual period}
 
-\item{cen_time:}{Extra (minimum) censoring period after accrual period}
+\item{lambda}{The parameter for exponential distribution}
 
-\item{arm:}{Group label(0,1)}
+\item{HR1}{For piecewise exponential only. The hazard ratio before change_time}
 
-\item{interim:}{Interim time point}
+\item{HR2}{For piecewise exponential only. The hazard ratio after change_time}
 
-\item{change_time:}{For piecewise exponential only. The time when hazard ratio changes from HR1 to HR2}
+\item{arm}{Group label(0,1)}
+
+\item{interim}{Interim time point}
+
+\item{change_time}{For piecewise exponential only. The time when hazard ratio changes from HR1 to HR2}
 }
 \description{
-expo_gen_2stages
-—————————————————————————————————————————————————————
 This function generate exponential dist survival data for 2 stages test.
 The censoring distribution in interim period is different from the whole trail
-It returns an (N * 3 * 2) array : obs_survival_int, event_int, obs_survival_fin, event_fin, arm
-3 columns are: obs_survival, event, arm
-If interim is a c(), result\link{, , i} is the result of ith interim (N * 5)
+If 'interim' is a number, it returns an (N * 5) array :
+\code{[arm, obs_time_int, event_int, obs_time_fin, event_fin]}
+If 'interim' is a list or c() meaning a series of interim timepoints,
+the third dimension of result array return the survival result of ith interim (N * 5)
+}
+\examples{
+set.seed(2024)
+sim_size <- 5000
+N <- 112
+n <- ceiling(N / 2)  # total sample size per arm
+r <- 60
+acc_time <- N / r
+cen_time <- 1
+lambda_H0 <- 0.9 * 1.5
+lambda_H1 <- 0.9
+int_step <- 4
+
+int_factor <- seq(0.4, 0.7, by = int_step / N)  
+# Each time interim sample size increase by 4
+interim_list <- int_factor * acc_time
+
+# parameter interim can be a list
+data_C <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time, lambda = lambda_H0, 
+                     dist = 'exp', cen_time = cen_time, arm = 0, interim = interim_list) 
+print(data_C[ , ,1])
+
+# parameter interim is a number
+data_C <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time, lambda = lambda_H0, 
+                   dist = 'exp', cen_time = cen_time, arm = 0, interim = interim_list[1]) 
+print(data_C)
+
 }
