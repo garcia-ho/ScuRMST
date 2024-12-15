@@ -1,6 +1,6 @@
 Package: ScuRMST
-Title: Two Stages Double-arm Clinical Trial Design Using Sculpted Critical Region of RMST. 
-Version: 0.0.1
+Title: Two Stages Double-arm Clinical Trial Design Using Sculpted Critical Region of RMST
+Version: 0.1.0
 Authors@R: 
     c(person(given = "Jiashan", family = "He", email = "gaaisin@connect.hku.hk", role = c("aut", "cre")))
 Description: This package is for Sculpted RMST Two Stages Double-arm Clinical Trial Design. 
@@ -25,13 +25,12 @@ Imports:
     simtrial,
     ggrepel,
     viridis,
-    dplyr
+    dplyr,
+Suggests:
+    knitr,
+    rmarkdown
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
