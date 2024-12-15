@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{log_rank_sim}
 \alias{log_rank_sim}
-\title{log_rank_sim}
+\title{Log-rank test simulation. P-value and z-statistics}
 \usage{
 log_rank_sim(data_C, data_E, sim_size, n, alpha, sided)
 }

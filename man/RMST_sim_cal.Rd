@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{RMST_sim_cal}
 \alias{RMST_sim_cal}
-\title{RMST_sim_cal}
+\title{Estimation of RMST values in each group}
 \usage{
 RMST_sim_cal(n, data_E, data_C, tau, sim_size)
 }
@@ -20,7 +20,7 @@ RMST_sim_cal(n, data_E, data_C, tau, sim_size)
 \description{
 This function estimate the RMST values of each arm based on generated survival data.
 It returns 2 * sim_size matrix. First row control group, second one experiment group.
-There is no guaranteed that the maximum simulated survival time is larger than tau.
+There is no guaranteed that the maximum simulated survival time is larger than $\tau$.
 Please refer to the 'tau' in survRM2 package: rmst2 function
 The output of this function is array to accelerate the following grid search code.
 }

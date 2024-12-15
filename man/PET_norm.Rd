@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{PET_norm}
 \alias{PET_norm}
-\title{PET_norm}
+\title{Probability of early termination using normal density}
 \usage{
 PET_norm(mu_c, var_c, mu_e, var_e, m1, t1)
 }

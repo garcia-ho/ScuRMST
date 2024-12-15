@@ -2,9 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{compare_line_plot}
 \alias{compare_line_plot}
-\title{compare_line_plot
-Used to draw line plot for comparing three methods (2 RMST and log-rank test) under different scenario
-Input is the dataframe of 3m_comparison output. ** The order of variable is fixed **}
+\title{Plotting the comparison of 3 methods}
 \usage{
 compare_line_plot(data, var_name)
 }
@@ -14,7 +12,6 @@ compare_line_plot(data, var_name)
 \item{var_name}{The variable name shown on X-axis of plots}
 }
 \description{
-compare_line_plot
 Used to draw line plot for comparing three methods (2 RMST and log-rank test) under different scenario
 Input is the dataframe of 3m_comparison output. ** The order of variable is fixed **
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{find_m_logrank}
 \alias{find_m_logrank}
-\title{find_m_logrank}
+\title{Find the critical value of two-stage log-rank test}
 \usage{
 find_m_logrank(
   logrank_data,
@@ -50,12 +50,12 @@ If no valid critical values are found, the function returns a data frame with:
 \code{m1 = 0, m2 = 0, PET0 = 0, PET1 = 0, alpha = 0, power = 0, PET = 0, EN0 = NA, EN1 = NA, EN = NA}.
 }
 \description{
-This function performs a grid search to find the critical values (m1, m2) for the log-rank test in a two-stage design.
-It makes use of probability \code{Prob(W1/sigma1 > m1 & W2/sigma2 > m2 | H_0) = alpha} and
+This function performs a grid search to find the critical values $(m_1, m_2)$ for the log-rank test in a two-stage design.
+It makes use of probability $P(W_1/\sigma_1 > m_1 & W_2/sigma_2 > m_2 | H_0) = \alpha$ and
 the normality of Z-statistics (Kwak and Jung(2017))
-(W/sigma) are estimated by simulation. The z statistics can be obtained using the \code{log_rank_sim} function
+$W/\sigma$ are estimated by simulation. The z-statistics can be obtained using the \code{log_rank_sim} function
 and accessed via its \code{$z_stats} output.
-When \code{power} is not given, the function finds the critical values (m1, m2) that control the overall type I error
+When \code{power} is not given, the function finds the critical values $(m_1, m_2)$ that control the overall type I error
 while maximizing the power. When \code{power} is given, it searches for valid critical values such that the empirical
 power is greater than the specified \code{power}. If \code{power} is given, \code{int_n} and \code{fin_n} are required
 for the expected sample size calculation.

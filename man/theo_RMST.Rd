@@ -2,8 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{theo_RMST}
 \alias{theo_RMST}
-\title{theo_RMST
-Calculate the theorecital RMST and RSDST of a explicit survival function(exponential only)}
+\title{Theoretical value of RMST (exponential distribution)}
 \usage{
 theo_RMST(lambda, dist, tau)
 }
@@ -15,6 +14,5 @@ theo_RMST(lambda, dist, tau)
 \item{tau}{Cut-off time for RMST}
 }
 \description{
-theo_RMST
 Calculate the theorecital RMST and RSDST of a explicit survival function(exponential only)
 }

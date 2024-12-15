@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{expo_gen_2stages}
 \alias{expo_gen_2stages}
-\title{expo_gen_2stages}
+\title{Generate the 2 stages survival data under exponential or piecewise exponential distribution}
 \usage{
 expo_gen_2stages(
   N,
