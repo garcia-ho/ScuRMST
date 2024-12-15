@@ -7,6 +7,7 @@ Description: This package is for Sculpted RMST Two Stages Double-arm Clinical Tr
     Sculpted refers to a defined critical region that necessitates both a significant difference in RMST 
     between groups and a large absolute value of RMST in the experimental group in order to declare the treatment effective.
 License: MIT + file LICENSE
+URL: https://garcia-ho.github.io/ScuRMST
 Imports:
   survRM2,
     mvtnorm,

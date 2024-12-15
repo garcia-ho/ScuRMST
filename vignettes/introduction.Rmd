@@ -1,5 +1,5 @@
 ---
-title: "Introduction of ScuRMST"
+title: "Introduction_to_ScuRMST"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{introduction}
