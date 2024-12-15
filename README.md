@@ -6,8 +6,12 @@
 
 ## Overview
 
-**ScuRMST** package is used for for Sculpted RMST Two Stages Double-arm Clinical Trial Design.\\ 
-Sculpted refers to a defined critical region that necessitates both a significant difference in RMST between groups and a large absolute value of RMST in the experimental group in order to declare the treatment effective.\\
+### Flow Chart of Sculpted RMST design
+![Flow chart](figures/Flow_chart.jpg) 
+
+`ScuRMST` package is used for for Sculpted RMST Two Stages Double-arm Clinical Trial Design.  
+
+Sculpted refers to a defined critical region that necessitates both a significant difference in RMST between groups and a large absolute value of RMST in the experimental group in order to declare the treatment effective.  
 Further information of technical details can be found at [GitHub repository](https://github.com/garcia-ho/RMST_Code.git)
 
 ## Installation
@@ -76,7 +80,8 @@ Example 1: Searching for the most powerful design (critical values) of Sculpted 
                 alpha = 0.05, sim_size = sim_size, method = 'Complex')
 ```
 
-Example 2: Searching for all suitable designs under $\alpha \leq 0.05$, power > 0.8.
+Example 2: Searching for all suitable designs under $\alpha \leq 0.05$, power > 0.8.  
+
  ```r
  power <- 0.8
  best_RMST <- adp_grid_src(rmst_data = rmst_data, mu_cov_h0 = mu_cov_h0, 
@@ -89,6 +94,6 @@ Example 2: Searching for all suitable designs under $\alpha \leq 0.05$, power > 
 ## Contact
 For questions, suggestions, or feedback, please reach out:
 
-- **Email**: [My_email](gaaisin@connect.hku.hk)
+- **Email**: [gaaisin@connect.hku.hk](gaaisin@connect.hku.hk)
 - **GitHub Issues**: You can open an issue on the [GitHub repository](https://github.com/garcia-ho/ScuRMST/issues).
 
