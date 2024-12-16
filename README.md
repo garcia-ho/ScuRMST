@@ -7,7 +7,7 @@
 ## Overview
 
 ### Flow Chart of Sculpted RMST design
-![Flow chart](figures/Flow_chart.jpg) 
+![Flow chart](man/figures/Flow_chart.jpg) 
 
 `ScuRMST` package is used for for Sculpted RMST Two Stages Double-arm Clinical Trial Design.  
 
