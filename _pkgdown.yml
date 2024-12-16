@@ -4,14 +4,12 @@ destination: docs
 
 navbar:
   structure:
-    left: [home, reference, articles, Github]
+    left: [home, reference, Github]
   left:
     - text: "Home"
       href: index.html
     - text: "Reference"
       href: reference/index.html
-    - text: "Articles"
-      href: articles/index.html
     - text: "Github"
       href: https://github.com/garcia-ho/RMST_Code
 

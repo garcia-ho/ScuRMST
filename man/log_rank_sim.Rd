@@ -53,8 +53,8 @@ data_E_H0 <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time,
                        cen_time = cen_time,arm = 1, interim = interim)
 lr_h0_int <- log_rank_sim(data_C = data_C[ , c(2,3,1)], data_E = data_E_H0[ , c(2,3,1)], 
                         sim_size =  sim_size, n = n, alpha = alpha, sided = 'greater')                                
-print(lr_h0_int$rejection)
-print(lr_h0_int$z_stats)
-print(lr_h0_int$var_w)
+# print(lr_h0_int$rejection)
+# print(lr_h0_int$z_stats)
+# print(lr_h0_int$var_w)
 
 }

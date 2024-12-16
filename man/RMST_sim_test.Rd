@@ -59,6 +59,6 @@ simple_rmst <- RMST_sim_test(data_C = data_C, data_E = data_E_H0,
                    sim_size = sim_size, tau = tau, 
                    n = n, alpha = 0.05 ,sided = 'greater')
 
-print(simple_rmst$test_result)
-print(simple_rmst$p_value)
+# print(simple_rmst$test_result)
+# print(simple_rmst$p_value)
 }

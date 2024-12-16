@@ -66,13 +66,12 @@ utils::globalVariables(c("k", "variable", "value", "linetype_group"))
 #' # parameter interim can be a list
 #' data_C <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time, lambda = lambda_H0, 
 #'                      dist = 'exp', cen_time = cen_time, arm = 0, interim = interim_list) 
-#' print(data_C[ , ,1])
+#' # print(data_C[ , ,1])
 #'
 #' # parameter interim is a number
 #' data_C <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time, lambda = lambda_H0, 
 #'                    dist = 'exp', cen_time = cen_time, arm = 0, interim = interim_list[1]) 
-#' print(data_C)
-#' 
+#' # print(data_C)
 #' @export
 #' 
 expo_gen_2stages <- function(N,dist,acc_time,cen_time,lambda,HR1,HR2,arm,interim,change_time)
@@ -194,7 +193,6 @@ else
 #' rmst_h0_int <- RMST_sim_cal(n = n, data_E = data_E_H0[ , c(2,3,1)], 
 #'                            data_C = data_C[ , c(2,3,1)],
 #'                            tau = tau_f,sim_size = sim_size)
-#' print(rmst_h0_int)
 #' @export
 #' 
 
@@ -265,8 +263,8 @@ RMST_sim_cal <- function(n,data_E,data_C,tau,sim_size)
 #'                    sim_size = sim_size, tau = tau, 
 #'                    n = n, alpha = 0.05 ,sided = 'greater')
 #' 
-#' print(simple_rmst$test_result)
-#' print(simple_rmst$p_value)
+#' # print(simple_rmst$test_result)
+#' # print(simple_rmst$p_value)
 #' @export
 #' 
 RMST_sim_test <- function(n, data_E, data_C, tau, sim_size, alpha, sided)
@@ -350,9 +348,9 @@ RMST_sim_test <- function(n, data_E, data_C, tau, sim_size, alpha, sided)
 #'                        cen_time = cen_time,arm = 1, interim = interim)
 #' lr_h0_int <- log_rank_sim(data_C = data_C[ , c(2,3,1)], data_E = data_E_H0[ , c(2,3,1)], 
 #'                         sim_size =  sim_size, n = n, alpha = alpha, sided = 'greater')                                
-#' print(lr_h0_int$rejection)
-#' print(lr_h0_int$z_stats)
-#' print(lr_h0_int$var_w)
+#' # print(lr_h0_int$rejection)
+#' # print(lr_h0_int$z_stats)
+#' # print(lr_h0_int$var_w)
 #' 
 #' @export
 #' 
@@ -481,8 +479,8 @@ PET_norm <- function(mu_c,var_c,mu_e,var_e,m1,t1)
 #'                            tau = tau_f, sim_size = sim_size)
 #' mu_cov_h0 <- mu_cov_mc(rmst_int = rmst_h0_int, rmst_fin = rmst_h0_fin, sim_size = sim_size)
 #' 
-#' print(mu_cov_h0$mu)
-#' print(mu_cov_h0$sigma)
+#' # print(mu_cov_h0$mu)
+#' # print(mu_cov_h0$sigma)
 #'
 #' @export
 
@@ -529,7 +527,7 @@ mu_cov_mc <- function(rmst_int, rmst_fin, sim_size){
 #' This function performs a grid search to find the critical values m1, m2) for the log-rank test in a two-stage design.
 #' It makes use of probability Prob(W1 / sigma1 > m1 & W2 / sigma2 > m2 | H0) = alpha and
 #' the normality of Z-statistics (Kwak and Jung(2017))
-#' $W/\sigma$ are estimated by simulation. The z-statistics can be obtained using the \code{log_rank_sim} function 
+#' W / sigma are estimated by simulation. The z-statistics can be obtained using the \code{log_rank_sim} function 
 #' and accessed via its \code{$z_stats} output.
 #' When \code{power} is not given, the function finds the critical values (m1, m2) that control the overall type I error
 #' while maximizing the power. When \code{power} is given, it searches for valid critical values such that the empirical

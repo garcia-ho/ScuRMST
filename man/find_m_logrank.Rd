@@ -53,7 +53,7 @@ If no valid critical values are found, the function returns a data frame with:
 This function performs a grid search to find the critical values m1, m2) for the log-rank test in a two-stage design.
 It makes use of probability Prob(W1 / sigma1 > m1 & W2 / sigma2 > m2 | H0) = alpha and
 the normality of Z-statistics (Kwak and Jung(2017))
-$W/\sigma$ are estimated by simulation. The z-statistics can be obtained using the \code{log_rank_sim} function
+W / sigma are estimated by simulation. The z-statistics can be obtained using the \code{log_rank_sim} function
 and accessed via its \code{$z_stats} output.
 When \code{power} is not given, the function finds the critical values (m1, m2) that control the overall type I error
 while maximizing the power. When \code{power} is given, it searches for valid critical values such that the empirical

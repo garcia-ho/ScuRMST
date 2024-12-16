@@ -47,5 +47,4 @@ data_E_H0 <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time,
 rmst_h0_int <- RMST_sim_cal(n = n, data_E = data_E_H0[ , c(2,3,1)], 
                            data_C = data_C[ , c(2,3,1)],
                            tau = tau_f,sim_size = sim_size)
-print(rmst_h0_int)
 }

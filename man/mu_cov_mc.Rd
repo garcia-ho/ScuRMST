@@ -56,7 +56,7 @@ rmst_h0_fin <- RMST_sim_cal(n = n, data_E = data_E_H0[ , c(4,5,1)],
                            tau = tau_f, sim_size = sim_size)
 mu_cov_h0 <- mu_cov_mc(rmst_int = rmst_h0_int, rmst_fin = rmst_h0_fin, sim_size = sim_size)
 
-print(mu_cov_h0$mu)
-print(mu_cov_h0$sigma)
+# print(mu_cov_h0$mu)
+# print(mu_cov_h0$sigma)
 
 }

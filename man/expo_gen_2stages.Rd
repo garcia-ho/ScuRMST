@@ -65,11 +65,10 @@ interim_list <- int_factor * acc_time
 # parameter interim can be a list
 data_C <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time, lambda = lambda_H0, 
                      dist = 'exp', cen_time = cen_time, arm = 0, interim = interim_list) 
-print(data_C[ , ,1])
+# print(data_C[ , ,1])
 
 # parameter interim is a number
 data_C <- expo_gen_2stages(N = n * sim_size, acc_time = acc_time, lambda = lambda_H0, 
                    dist = 'exp', cen_time = cen_time, arm = 0, interim = interim_list[1]) 
-print(data_C)
-
+# print(data_C)
 }
