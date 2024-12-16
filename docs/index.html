@@ -33,7 +33,8 @@
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="index.html">Home</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/garcia-ho/RMST_Code"></a></li>
+<li class="nav-item"><a class="nav-link" href="articles/index.html">Articles</a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/garcia-ho/RMST_Code">Github</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -53,7 +54,16 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><strong>ScuRMST</strong> package is used for for Sculpted RMST Two Stages Double-arm Clinical Trial Design.\ Sculpted refers to a defined critical region that necessitates both a significant difference in RMST between groups and a large absolute value of RMST in the experimental group in order to declare the treatment effective.\ Further information of technical details can be found at <a href="https://github.com/garcia-ho/RMST_Code.git" class="external-link">GitHub repository</a></p>
+<div class="section level3">
+<h3 id="flow-chart-of-sculpted-rmst-design">Flow Chart of Sculpted RMST design<a class="anchor" aria-label="anchor" href="#flow-chart-of-sculpted-rmst-design"></a>
+</h3>
+<div class="float">
+<img src="reference/figures/Flow_chart.jpg" alt="Flow chart"><div class="figcaption">Flow chart</div>
+</div>
+<p><code>ScuRMST</code> package is used for for Sculpted RMST Two Stages Double-arm Clinical Trial Design.</p>
+<p>Sculpted refers to a defined critical region that necessitates both a significant difference in RMST between groups and a large absolute value of RMST in the experimental group in order to declare the treatment effective.<br>
+Further information of technical details can be found at <a href="https://github.com/garcia-ho/RMST_Code.git" class="external-link">GitHub repository</a></p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -119,7 +129,12 @@
 <span> <span class="va">best_RMST</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/adp_grid_src.html">adp_grid_src</a></span><span class="op">(</span>rmst_data <span class="op">=</span> <span class="va">rmst_data</span>, mu_cov_h0 <span class="op">=</span> <span class="va">mu_cov_h0</span>, </span>
 <span>                mu_cov_h1 <span class="op">=</span> <span class="va">mu_cov_h1</span>, int_n <span class="op">=</span> <span class="va">interim</span> <span class="op">*</span> <span class="va">r</span>, fin_n <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">n</span>, </span>
 <span>                alpha <span class="op">=</span> <span class="fl">0.05</span>, sim_size <span class="op">=</span> <span class="va">sim_size</span>, method <span class="op">=</span> <span class="st">'Complex'</span><span class="op">)</span></span></code></pre></div>
-<p>Example 2: Searching for all suitable designs under <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≤</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha \leq 0.05</annotation></semantics></math>, power &gt; 0.8. <code>r  power &lt;- 0.8  best_RMST &lt;- adp_grid_src(rmst_data = rmst_data, mu_cov_h0 = mu_cov_h0,                  mu_cov_h1 = mu_cov_h1, int_n = interim * r, fin_n = 2 * n,                  alpha = 0.05, power = 0.8, sim_size = sim_size, method = 'Complex')</code></p>
+<p>Example 2: Searching for all suitable designs under <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≤</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha \leq 0.05</annotation></semantics></math>, power &gt; 0.8.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">power</span> <span class="op">&lt;-</span> <span class="fl">0.8</span></span>
+<span><span class="va">best_RMST</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/adp_grid_src.html">adp_grid_src</a></span><span class="op">(</span>rmst_data <span class="op">=</span> <span class="va">rmst_data</span>, mu_cov_h0 <span class="op">=</span> <span class="va">mu_cov_h0</span>, </span>
+<span>               mu_cov_h1 <span class="op">=</span> <span class="va">mu_cov_h1</span>, int_n <span class="op">=</span> <span class="va">interim</span> <span class="op">*</span> <span class="va">r</span>, fin_n <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">n</span>, </span>
+<span>               alpha <span class="op">=</span> <span class="fl">0.05</span>, power <span class="op">=</span> <span class="fl">0.8</span>, sim_size <span class="op">=</span> <span class="va">sim_size</span>, method <span class="op">=</span> <span class="st">'Complex'</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -128,7 +143,7 @@
 <p>For questions, suggestions, or feedback, please reach out:</p>
 <ul>
 <li>
-<strong>Email</strong>: <a href="gaaisin@connect.hku.hk">My_email</a>
+<strong>Email</strong>: <a href="gaaisin@connect.hku.hk">gaaisin@connect.hku.hk</a>
 </li>
 <li>
 <strong>GitHub Issues</strong>: You can open an issue on the <a href="https://github.com/garcia-ho/ScuRMST/issues" class="external-link">GitHub repository</a>.</li>

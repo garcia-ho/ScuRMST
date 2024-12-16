@@ -20,8 +20,8 @@ RMST_sim_cal(n, data_E, data_C, tau, sim_size)
 \description{
 This function estimate the RMST values of each arm based on generated survival data.
 It returns 2 * sim_size matrix. First row control group, second one experiment group.
-There is no guaranteed that the maximum simulated survival time is larger than $\tau$.
-Please refer to the 'tau' in survRM2 package: rmst2 function
+There is no guaranteed that the maximum simulated survival time is larger than tau.
+Please refer to the parameter 'tau' in survRM2 package: \href{https://rdrr.io/cran/survRM2/man/rmst2.html}{rmst2} function
 The output of this function is array to accelerate the following grid search code.
 }
 \examples{

@@ -23,8 +23,8 @@ log_rank_sim(data_C, data_E, sim_size, n, alpha, sided)
 A list with the following components:
 \describe{
 \item{rejection}{The proportion of simulations where the log-rank test statistic is less than or equal to alpha.}
-\item{z_stats}{A numeric vector of the z statistics (W/sigma) for each simulation.}
-\item{var_w}{The variance of statistics W for correlation calculation.}
+\item{z_stats}{A numeric vector of the z statistics W/sigma for each simulation.}
+\item{var_w}{The variance of statistics $W$ for correlation calculation.}
 }
 }
 \description{

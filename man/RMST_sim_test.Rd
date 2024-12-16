@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{RMST_sim_test}
 \alias{RMST_sim_test}
-\title{Single stage RMST test using simulation. P-value and cut off $\tau$ adjustment times}
+\title{Single stage RMST test using simulation. P-value and cut off tau adjustment times}
 \usage{
 RMST_sim_test(n, data_E, data_C, tau, sim_size, alpha, sided)
 }
@@ -27,7 +27,7 @@ A list with the following components:
 \item{test_result}{A data frame with the following columns:
 \describe{
 \item{rejection}{The proportion of simulations where the RMST test p-value is less than or equal to alpha.}
-\item{tau adjustment}{The proportion of simulations where $\tau$ adjustment occurred.}
+\item{tau adjustment}{The proportion of simulations where tau adjustment occurred.}
 }
 }
 \item{p_value}{A numeric vector of the p-values for each simulation.}
@@ -35,7 +35,7 @@ A list with the following components:
 }
 \description{
 Different from RMST_sim_cal, It return a dataframe of p-value and rejection times of single-stage RMST test .
-It also counts the times of $\tau$ adjustment (adjusted $\tau$ is the minimax survival time of two groups)
+It also counts the times of tau adjustment (adjusted tau is the minimax survival time of two groups)
 This function can be used to compare our rejection method with classical RMST difference test
 }
 \examples{
