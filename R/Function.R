@@ -156,7 +156,7 @@ else
 
 
 
-#' Estimation of RMST values in each group
+#' Estimation of RMST values in each group (parallel)
 #' 
 #' This function estimate the RMST values of each arm based on generated survival data.
 #' It returns 2 * sim_size matrix. First row control group, second one experiment group.
@@ -198,6 +198,11 @@ else
 
 RMST_sim_cal <- function(n,data_E,data_C,tau,sim_size)
 {
+  n_cores <- get_cores()
+  cl <- makeCluster(n_cores)
+  on.exit(stopCluster(cl), add = TRUE) # Ensure the cluster stops after execution
+  invisible(clusterExport(cl, varlist = ls("package:ScuRMST"), envir = environment()))
+  
     sim_result <- foreach(k = 1:sim_size, .combine = 'cbind', .packages = 'survRM2') %dopar% {
     pre_data <- rbind(data_C[((k-1)*n+1):(k*n),],data_E[((k-1)*n+1):(k*n),])
     # the simulation data is not guaranteed to be larger than tau
@@ -217,7 +222,7 @@ RMST_sim_cal <- function(n,data_E,data_C,tau,sim_size)
 
 
 
-#' Single stage RMST test using simulation. P-value and cut off tau adjustment times
+#' Single stage RMST test using simulation. P-value and cut off tau adjustment times (parallel)
 #' 
 #' Different from RMST_sim_cal, It return a dataframe of p-value and rejection times of single-stage RMST test .
 #' It also counts the times of tau adjustment (adjusted tau is the minimax survival time of two groups)
@@ -243,7 +248,7 @@ RMST_sim_cal <- function(n,data_E,data_C,tau,sim_size)
 #' }
 #' 
 #' @examples
-#'median_con <- 10 # month
+#' median_con <- 10 # month
 #' lambda_H0 <- log(2)/median_con
 #' lambda_H1 <- lambda_H0 * 0.67
 #' sim_size <- 5000 
@@ -269,6 +274,11 @@ RMST_sim_cal <- function(n,data_E,data_C,tau,sim_size)
 #' 
 RMST_sim_test <- function(n, data_E, data_C, tau, sim_size, alpha, sided)
 {
+  n_cores <- get_cores()
+  cl <- makeCluster(n_cores)
+  on.exit(stopCluster(cl), add = TRUE) # Ensure the cluster stops after execution
+  invisible(clusterExport(cl, varlist = ls("package:ScuRMST"), envir = environment()))
+
     tau_adj_count <- 0
     sim_result <- foreach(k = 1:sim_size, .combine = 'cbind', .packages = 'survRM2') %dopar% {
           test_res <- 0
@@ -308,7 +318,7 @@ RMST_sim_test <- function(n, data_E, data_C, tau, sim_size, alpha, sided)
 
 
 
-#' Log-rank test simulation. P-value and z-statistics 
+#' Log-rank test simulation. P-value and z-statistics (parallel)
 #' 
 #' For log-rank test simulation. Single-stage p-value or two-stage statistics. 
 #' Return the simulated type I error, empirical mean and variance of Z-statistics of log-rank test
@@ -356,6 +366,11 @@ RMST_sim_test <- function(n, data_E, data_C, tau, sim_size, alpha, sided)
 #' 
 log_rank_sim <- function(data_C, data_E, sim_size, n, alpha, sided)
 {
+  n_cores <- get_cores()
+  cl <- makeCluster(n_cores)
+  on.exit(stopCluster(cl), add = TRUE) # Ensure the cluster stops after execution
+  invisible(clusterExport(cl, varlist = ls("package:ScuRMST"), envir = environment()))
+
   logrank_result <- foreach(k = 1:sim_size, .combine = 'cbind', .packages = 'nph') %dopar% {
     pre_data <- rbind(data_C[((k-1)*n+1):(k*n),],data_E[((k-1)*n+1):(k*n),])
     if (sided == 'greater') {
@@ -697,7 +712,7 @@ find_m_logrank <- function(logrank_data, corr_h0, search_times, int_n = NULL,
 
 
 
-#' Adaptive grid search for critical value using RMST (Simple or Sculpted)
+#' Adaptive grid search for critical value using RMST (Simple or Sculpted (parallel))
 #' 
 #' This is the function for adaptive grid search of RMST two-stage design with one searching parameters gamma.
 #' The grid search make use of the conditional distribution (Normal) of E | D, which is illustrated in paper.
@@ -786,6 +801,11 @@ find_m_logrank <- function(logrank_data, corr_h0, search_times, int_n = NULL,
 adp_grid_src <- function(rmst_data, mu_cov_h0, mu_cov_h1, int_n, fin_n, 
                         sim_size, method, alpha, power = NULL) 
   {
+    n_cores <- get_cores()
+    cl <- makeCluster(n_cores)
+    on.exit(stopCluster(cl), add = TRUE) # Ensure the cluster stops after execution
+    invisible(clusterExport(cl, varlist = ls("package:ScuRMST"), envir = environment()))
+
       # Interim
       mu1 <- mu_cov_h1$mu[c(1,2)]
       sigma1 <- mu_cov_h1$sigma[1:2, 1:2]

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{RMST_sim_cal}
 \alias{RMST_sim_cal}
-\title{Estimation of RMST values in each group}
+\title{Estimation of RMST values in each group (parallel)}
 \usage{
 RMST_sim_cal(n, data_E, data_C, tau, sim_size)
 }

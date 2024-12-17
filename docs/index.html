@@ -74,6 +74,17 @@ Further information of technical details can be found at <a href="https://github
 <span></span>
 <span><span class="co"># Install ScuRMST from GitHub</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"garcia-ho/ScuRMST"</span><span class="op">)</span></span></code></pre></div>
+<p>Due to the computational burdensome of simulation, many functions in this package are based on parallel computing using package (Foreach)[<a href="https://www.rdocumentation.org/packages/foreach/versions/1.5.2" class="external-link uri">https://www.rdocumentation.org/packages/foreach/versions/1.5.2</a>] and package (doParallel)[<a href="https://www.rdocumentation.org/packages/doParallel/versions/1.0.17" class="external-link uri">https://www.rdocumentation.org/packages/doParallel/versions/1.0.17</a>].<br>
+Please register the number of cores first after importing <code>ScuRMST</code></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Set the number of cores as needed</span></span>
+<span><span class="fu"><a href="reference/set_cores.html">set_cores</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Return the current number of cores</span></span>
+<span><span class="va">get_cores</span></span>
+<span></span>
+<span><span class="co"># Return the number of cores that available in your machine</span></span>
+<span><span class="va">n_cores</span> <span class="op">&lt;-</span> <span class="fu">detectCores</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="features--examples">Features &amp; Examples<a class="anchor" aria-label="anchor" href="#features--examples"></a>
@@ -81,8 +92,8 @@ Further information of technical details can be found at <a href="https://github
 <div class="section level3">
 <h3 id="given-total-sample-size-n-and-interim-sample-size-n">Given Total sample size N and interim sample size n<a class="anchor" aria-label="anchor" href="#given-total-sample-size-n-and-interim-sample-size-n"></a>
 </h3>
-<p>Example 1: Searching for the most powerful design (critical values) of Sculpted RMST under <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≤</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha \leq 0.05</annotation></semantics></math></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<p>Example 1: Searching for the most powerful design (critical values) of Sculpted RMST under <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≤</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha \leq 0.05</annotation></semantics></math>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="va">sim_size</span> <span class="op">&lt;-</span> <span class="fl">5000</span> </span>
 <span> <span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span> <span class="va">r</span> <span class="op">&lt;-</span> <span class="fl">60</span></span>
@@ -128,12 +139,40 @@ Further information of technical details can be found at <a href="https://github
 <span> <span class="va">best_RMST</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/adp_grid_src.html">adp_grid_src</a></span><span class="op">(</span>rmst_data <span class="op">=</span> <span class="va">rmst_data</span>, mu_cov_h0 <span class="op">=</span> <span class="va">mu_cov_h0</span>, </span>
 <span>                mu_cov_h1 <span class="op">=</span> <span class="va">mu_cov_h1</span>, int_n <span class="op">=</span> <span class="va">interim</span> <span class="op">*</span> <span class="va">r</span>, fin_n <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">n</span>, </span>
 <span>                alpha <span class="op">=</span> <span class="fl">0.05</span>, sim_size <span class="op">=</span> <span class="va">sim_size</span>, method <span class="op">=</span> <span class="st">'Complex'</span><span class="op">)</span></span></code></pre></div>
-<p>Example 2: Searching for all suitable designs under <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≤</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha \leq 0.05</annotation></semantics></math>, power &gt; 0.8.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>Example 2: Searching for all suitable designs under <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≤</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha \leq 0.05</annotation></semantics></math>, power &gt; 0.8:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">power</span> <span class="op">&lt;-</span> <span class="fl">0.8</span></span>
 <span><span class="va">best_RMST</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/adp_grid_src.html">adp_grid_src</a></span><span class="op">(</span>rmst_data <span class="op">=</span> <span class="va">rmst_data</span>, mu_cov_h0 <span class="op">=</span> <span class="va">mu_cov_h0</span>, </span>
 <span>               mu_cov_h1 <span class="op">=</span> <span class="va">mu_cov_h1</span>, int_n <span class="op">=</span> <span class="va">interim</span> <span class="op">*</span> <span class="va">r</span>, fin_n <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">n</span>, </span>
 <span>               alpha <span class="op">=</span> <span class="fl">0.05</span>, power <span class="op">=</span> <span class="fl">0.8</span>, sim_size <span class="op">=</span> <span class="va">sim_size</span>, method <span class="op">=</span> <span class="st">'Complex'</span><span class="op">)</span></span></code></pre></div>
+<p>Example 3: Searching for the optimal design minimizing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msub><mi>N</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">EN_0</annotation></semantics></math>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lambda_H1</span> <span class="op">&lt;-</span> <span class="fl">0.9</span></span>
+<span><span class="va">HR</span> <span class="op">&lt;-</span> <span class="fl">1.7</span></span>
+<span><span class="va">lambda_H0</span> <span class="op">&lt;-</span> <span class="va">lambda_H1</span> <span class="op">*</span> <span class="va">HR</span></span>
+<span><span class="va">sim_size</span> <span class="op">&lt;-</span> <span class="fl">5000</span></span>
+<span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fl">60</span></span>
+<span><span class="va">cen_time</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">0.1</span></span>
+<span><span class="va">power</span> <span class="op">&lt;-</span> <span class="fl">0.85</span></span>
+<span><span class="va">result_scu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># Give a searching range of total sample size N:</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">N</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">90</span>, to <span class="op">=</span> <span class="fl">92</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">{</span></span>
+<span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="va">N</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span> </span>
+<span>    <span class="va">acc_time</span> <span class="op">&lt;-</span> <span class="va">N</span><span class="op">/</span><span class="va">r</span></span>
+<span>    <span class="va">opt_rmst</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_opt_des.html">get_opt_des</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, sim_size <span class="op">=</span> <span class="va">sim_size</span>, </span>
+<span>                acc_time <span class="op">=</span> <span class="va">acc_time</span>, cen_time <span class="op">=</span> <span class="va">cen_time</span>, int_step <span class="op">=</span> <span class="fl">4</span>, </span>
+<span>                lambda_H0 <span class="op">=</span> <span class="va">lambda_H0</span>, lambda_H1 <span class="op">=</span> <span class="va">lambda_H1</span>, H1_type <span class="op">=</span> <span class="st">'PH'</span>, </span>
+<span>                alpha <span class="op">=</span> <span class="va">alpha</span>, power <span class="op">=</span> <span class="va">power</span>, method <span class="op">=</span> <span class="st">'Complex'</span><span class="op">)</span> </span>
+<span>    <span class="va">res</span> <span class="op">&lt;-</span> <span class="va">our_rmst</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PET0'</span>,<span class="st">'PET1'</span>,<span class="st">'alpha'</span>,<span class="st">'power'</span>,</span>
+<span>                        <span class="st">'PET'</span>,<span class="st">'EN0'</span>,<span class="st">'EN1'</span>,<span class="st">'EN'</span>,<span class="st">'interim_n'</span><span class="op">)</span><span class="op">]</span></span>
+<span>    <span class="va">res</span><span class="op">$</span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span></span>
+<span>    <span class="va">result_scu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">result_scu</span>, <span class="va">res</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">result_scu</span>, <span class="st">"tem_result_scu.rds"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># All results are stored in result_scu</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

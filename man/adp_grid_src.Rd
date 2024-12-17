@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{adp_grid_src}
 \alias{adp_grid_src}
-\title{Adaptive grid search for critical value using RMST (Simple or Sculpted)}
+\title{Adaptive grid search for critical value using RMST (Simple or Sculpted (parallel))}
 \usage{
 adp_grid_src(
   rmst_data,

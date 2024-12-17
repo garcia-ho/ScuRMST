@@ -2,7 +2,7 @@
 % Please edit documentation in R/Function.R
 \name{RMST_sim_test}
 \alias{RMST_sim_test}
-\title{Single stage RMST test using simulation. P-value and cut off tau adjustment times}
+\title{Single stage RMST test using simulation. P-value and cut off tau adjustment times (parallel)}
 \usage{
 RMST_sim_test(n, data_E, data_C, tau, sim_size, alpha, sided)
 }
