@@ -74,8 +74,8 @@ Further information of technical details can be found at <a href="https://github
 <span></span>
 <span><span class="co"># Install ScuRMST from GitHub</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"garcia-ho/ScuRMST"</span><span class="op">)</span></span></code></pre></div>
-<p>Due to the computational burdensome of simulation, many functions in this package are based on parallel computing using package (Foreach)[<a href="https://www.rdocumentation.org/packages/foreach/versions/1.5.2" class="external-link uri">https://www.rdocumentation.org/packages/foreach/versions/1.5.2</a>] and package (doParallel)[<a href="https://www.rdocumentation.org/packages/doParallel/versions/1.0.17" class="external-link uri">https://www.rdocumentation.org/packages/doParallel/versions/1.0.17</a>].<br>
-Please register the number of cores first after importing <code>ScuRMST</code></p>
+<p>Due to the computational burdensome of simulation, many functions in this package are based on parallel computing using package <a href="https://www.rdocumentation.org/packages/foreach/versions/1.5.2" class="external-link">Foreach</a> and package <a href="https://www.rdocumentation.org/packages/doParallel/versions/1.0.17" class="external-link">doParallel</a>.<br>
+Please register the number of cores first after importing <code>ScuRMST</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set the number of cores as needed</span></span>
 <span><span class="fu"><a href="reference/set_cores.html">set_cores</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span>  </span>

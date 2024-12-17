@@ -25,8 +25,9 @@ install.packages("devtools")
 # Install ScuRMST from GitHub
 devtools::install_github("garcia-ho/ScuRMST")
 ```
+
 Due to the computational burdensome of simulation, many functions in this package are based on parallel computing using package [Foreach](https://www.rdocumentation.org/packages/foreach/versions/1.5.2) and package [doParallel](https://www.rdocumentation.org/packages/doParallel/versions/1.0.17).  
-Please register the number of cores first after importing `ScuRMST`  
+Please register the number of cores first after importing `ScuRMST`:    
 
 ```r
 # Set the number of cores as needed
@@ -38,6 +39,7 @@ get_cores
 # Return the number of cores that available in your machine
 n_cores <- detectCores()
 ```
+
 ## Features & Examples
 
 ### Given Total sample size N and interim sample size n
