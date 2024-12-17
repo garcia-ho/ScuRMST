@@ -25,7 +25,7 @@ install.packages("devtools")
 # Install ScuRMST from GitHub
 devtools::install_github("garcia-ho/ScuRMST")
 ```
-Due to the computational burdensome of simulation, many functions in this package are based on parallel computing using package (Foreach)[https://www.rdocumentation.org/packages/foreach/versions/1.5.2] and package (doParallel)[https://www.rdocumentation.org/packages/doParallel/versions/1.0.17].  
+Due to the computational burdensome of simulation, many functions in this package are based on parallel computing using package [Foreach](https://www.rdocumentation.org/packages/foreach/versions/1.5.2) and package [doParallel](https://www.rdocumentation.org/packages/doParallel/versions/1.0.17).  
 Please register the number of cores first after importing `ScuRMST`  
 
 ```r
